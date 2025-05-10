@@ -18,7 +18,7 @@ let alerts = []; // Store alerts in memory for now
 
 app.post("/alert", upload.single("image"), (req, res) => {
   const { message } = req.body;
-  const imageUrl = req.file ? `http://<YOUR_SERVER_IP>:8000/uploads/${req.file.filename}` : null;
+  const imageUrl = req.file ? `https://firm-detection-api.onrender.com/uploads/${req.file.filename}` : null;
 
   const alert = { id: Date.now(), message, imageUrl };
   alerts.push(alert);
