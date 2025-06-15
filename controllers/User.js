@@ -32,6 +32,7 @@ exports.upload = upload.single('image'); // Middleware to handle single image fi
 
 exports.createUser = async (req, res) => {
     try {
+   
         const existingUser = await User.findOne({ email: req.body.email });
         if (existingUser) {
             return res.status(400).send({ message: 'Email already exists' });

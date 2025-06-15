@@ -20,7 +20,7 @@ const UserSchema = new mongoose.Schema({
         default : "user",
     },
     gender: { type: String, required: true },
-    status: { type: String, required: true, default : "inactive",},
+    status: { type: String, required: true, default : "active",},
     image: {type: String, required: true, }
 }, {
     timestamps: true,
