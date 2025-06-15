@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const detectionRoutes = require('./routes/detection');
-
+const  usersRouter = require('./routes/User');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -11,6 +11,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 app.use('/alert', detectionRoutes); // Use /alert route
+app.use('/api',usersRouter);
 
 // MongoDB connect
 mongoose.connect('mongodb+srv://root:root@cluster0.kbsy1uj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {

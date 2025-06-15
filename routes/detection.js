@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
-const { createDetection } = require('../controllers/detectionController');
+const { createDetection, getAllDetections } = require('../controllers/detectionController');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -16,5 +16,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 router.post('/', upload.single('image'), createDetection);
+// 👇 NEW: GET all detections
+router.get('/', getAllDetections);
 
 module.exports = router;

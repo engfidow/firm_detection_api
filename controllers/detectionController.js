@@ -16,3 +16,17 @@ exports.createDetection = async (req, res) => {
     res.status(500).json({ message: 'Failed to save detection', error: err.message });
   }
 };
+
+
+// 👇 NEW FUNCTION: Get All Detections
+exports.getAllDetections = async (req, res) => {
+  try {
+    const detections = await Detection.find().sort({ timestamp: -1 });
+    res.status(200).json({
+      message: 'Detections fetched successfully',
+      data: detections,
+    });
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to fetch detections', error: err.message });
+  }
+};
